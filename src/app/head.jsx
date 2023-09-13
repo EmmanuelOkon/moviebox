@@ -1,4 +1,4 @@
-export const metadata = {
+export const Metadata = {
   title: "Movie Box",
   description: "A database for movies",
   keywords: [
