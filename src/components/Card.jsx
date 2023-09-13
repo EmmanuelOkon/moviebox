@@ -24,7 +24,6 @@ export default function Card({ result }) {
         <div className="py-2 px-3 flex flex-col justify-between">
           <h2 className="truncat text-[24px] md:text-2xl font-bold text-amber-600">
             {result.title || result.name}
-            home
           </h2>
           <p className="line-clamp-3 text-base leading-6 sm:leading-tight md:text-base tracking-tighter leaing-3">
             {result.overview}

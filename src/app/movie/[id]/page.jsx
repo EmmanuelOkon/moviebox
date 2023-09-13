@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 import Sidebar from "./sidebar";
 
 async function getMovie(movieId) {
@@ -10,8 +10,18 @@ async function getMovie(movieId) {
 
 function getMonthName(dateString) {
   const date = new Date(dateString);
-  const options = { month: "long" };
-  return new Intl.DateTimeFormat("en-US", options).format(date);
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  try {
+    return new Intl.DateTimeFormat("en-US", options).format(date);
+  } catch (error) {
+    console.error("Error formatting date:", error);
+    return "";
+  }
 }
 
 export default async function MoviePage({ params }) {
@@ -21,10 +31,29 @@ export default async function MoviePage({ params }) {
   const releaseDate = movie.release_date;
   const monthName = getMonthName(releaseDate);
 
+  const movieData = {
+    title: movie.title,
+    overview: movie.overview,
+    releaseDate: movie.release_date,
+    voteCount: movie.vote_count,
+    backdropPath: movie.backdrop_path,
+    posterPath: movie.poster_path,
+  };
+
   return (
     <>
-      <Sidebar />
-      {/* <div className="w-full bg-rose">
+      <Sidebar
+        // {...movieData}
+        movie={movieData}
+        // monthName={monthName}
+        // releaseDate={releaseDate}
+      />
+    </>
+  );
+}
+
+{
+  /* <div className="w-full bg-rose">
         <div className="p-4 md:pt-8 flex flex-col md:flex-row items-center content-center max-w-6xl mx-auto md:space-x-6">
           <Image
             src={`https://image.tmdb.org/t/p/original/${
@@ -63,9 +92,7 @@ export default async function MoviePage({ params }) {
             </p>
           </div>
         </div>
-      </div> */}
-    </>
-  );
+      </div> */
 }
 
 // https://www.themoviedb.org/movie

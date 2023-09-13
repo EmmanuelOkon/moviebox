@@ -11,7 +11,7 @@ import Loading from "./loading";
 
 // const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
+export const Metadata = {
   title: "Movie Box",
   description: "A database for movies",
   keywords: [

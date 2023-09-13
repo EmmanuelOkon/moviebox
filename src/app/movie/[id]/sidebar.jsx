@@ -21,8 +21,11 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Sidebar() {
+export default function Sidebar(props) {
+  const { movie, monthName } = props;
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const isMovieDataAvailable = !!movie;
 
   return (
     <div className="h-screen flex overflow-hidden bg-lightGray">
@@ -111,15 +114,16 @@ export default function Sidebar() {
               <div className="flex-shrink-0 flex border-t border-indigo-800 p-4">
                 <Link href="#" className="flex-shrink-0 group block">
                   <div className="flex items-center bg-rose">
-                    <div>
-                      <Image
-                        className="inline-block h-10 w-10 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                        width={100}
-                        height={100}
-                      />
-                    </div>
+                    <Link href="#" className="flex-shrink-0 w-full group block">
+                      <div className="flex items-center ">
+                        <TbLogout />
+                        <div className="ml-3">
+                          <p className="text-lg font-medium font-poppins text-offBlack">
+                            Log out
+                          </p>
+                        </div>
+                      </div>
+                    </Link>
                     <div className="ml-3">
                       <p className="text-base font-medium text-white">
                         Tom Cook home
@@ -216,17 +220,63 @@ export default function Sidebar() {
             className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
             onClick={() => setSidebarOpen(true)}
           >
-            <span className="sr-only">Open sidebar</span>
             <MenuIcon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
         <main className="flex-1 relative z-0 overflow-y-auto focus:outline-none">
-          <div className="py-6">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+          <div className="py-6 bg-rose">
+            {isMovieDataAvailable && (
+              <div className="w-full bg-rose">
+                <div className="w-full bg-rose">
+                  <div className="p-4 md:pt-8 flex flex-col md:flex-row items-center content-center max-w-6xl mx-auto md:space-x-6">
+                    <Image
+                      src={`https://image.tmdb.org/t/p/original/${
+                        movie.backdrop_path || movie.poster_path
+                      }`}
+                      width={500}
+                      height={300}
+                      className="rounded-lg"
+                      style={{
+                        maxWidth: "100%",
+                        height: "100%",
+                      }}
+                      placeholder="blur"
+                      blurDataURL="/spinner.svg"
+                      alt={movie.title}
+                    ></Image>
+                    <div className="p-2">
+                      <h2 className="text-[24px] md:text-3xl mb-3 font-bold text-amber-500">
+                        {movie.title || movie.name}
+                      </h2>
+                      <p className="text-lg mb-3 text-justify">
+                        <span className="font-semibold mr-1 text-amber-500">
+                          Overview:
+                        </span>
+                        {movie.overview}
+                      </p>
+                      <p className="mb-3">
+                        <span className="font-semibold mr-1 text-amber-500">
+                          Date Released:
+                        </span>
+                        {monthName} {releaseDate.substr(8, 2)},{" "}
+                        {releaseDate.substr(0, 4)}
+                      </p>
+                      <p className="mb-3">
+                        <span className="font-semibold mr-1 text-amber-500">
+                          Rating:
+                        </span>
+                        {movie.vote_count} likes
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+            {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
               <h1 className="text-2xl font-semibold text-gray-900">
                 Dashboard
               </h1>
-            </div>
+            </div> */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
               {/* Replace with your content */}
               <div className="py-4">Hello there</div>
