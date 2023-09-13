@@ -31,12 +31,10 @@ export default function RootLayout({ children }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate a delay (e.g., fetching data) - Replace this with your actual data fetching logic
     const delay = setTimeout(() => {
-      // Step 4: When data is fetched, set isLoading to false
       setIsLoading(false);
       clearTimeout(delay);
-    }, 4000); // Simulated 2-second delay, replace with your actual fetching logic
+    }, 4000);
   }, []);
 
   return (
