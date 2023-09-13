@@ -1,0 +1,20 @@
+.heroPoster {
+  background-image: url("/assets/heroPoster.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .heroPoster {
+    height: 90vh; /* Adjust the height as needed for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .heroPoster {
+    height: 100vh;
+  }
+}
