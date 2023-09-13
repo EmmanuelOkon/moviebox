@@ -75,14 +75,14 @@ export default function Sidebar() {
               <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
                 <div className="flex-shrink-0 flex items-center px-4">
                   <Link
-                    className="text-base text-x font-bold flex items-center lg:gap-4 font-poppins outline-0"
+                    className="text-base font-bold flex items-center gap-2 font-poppins outline-0"
                     href="/"
                   >
                     <Image
                       src="/assets/logo.png"
                       alt="logo"
-                      width={50}
-                      height={50}
+                      width={40}
+                      height={40}
                     />
                     MovieBox
                   </Link>
@@ -187,9 +187,11 @@ export default function Sidebar() {
               <span className="font-medium text-lg ">
                 50k people are playing now
               </span>
-              <button className="mt-4 rounded-[30px] bg-rose bg-opacity-20 text-rose p-3 px-5 hover:bg-opacity-70 hover:font-bold hover:text-white font-medium ">
-                Start playing
-              </button>
+              <div className="mt-4 text-center">
+                <button className=" rounded-[30px] bg-rose bg-opacity-20 text-rose p-[14px] px-[26px] hover:bg-opacity-70 hover:font-bold hover:text-white font-medium ">
+                  Start playing
+                </button>
+              </div>
             </div>
             <div className="flex-shrink-0 flex rounded-ee-[35px]  p-4">
               <Link href="#" className="flex-shrink-0 w-full group block">

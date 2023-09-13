@@ -2,13 +2,13 @@ import Image from "next/image";
 
 export default function Loading() {
   return (
-    <div className="flex justify-center max-h-fit my-auto">
+    <div className="flex justify-center items-center bg-offWhite h-screen">
       <Image
-        className="h-full"
+        className="w-1/2 md:w-[18%] h-auto"
         src="/assets/spinner.svg"
         alt="loading..."
-        width={10}
-        height={10}
+        width={50}
+        height={50}
       />
     </div>
   );
