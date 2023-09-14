@@ -36,27 +36,27 @@ export default function Footer() {
     <footer className="bg-white" aria-labelledby="footer-heading">
       <div className="mxauto px-4 lg:pb20 lg:py-16 lg:px-20">
         <div className="font-bold text-center ">
-          <ul className="lg:flex items-center justify-center ">
+          <ul className="flex items-center justify-center ">
             {navigation.social.map((item) => (
-              <li key={item.name} className="lg:mx-10 py-1">
+              <li key={item.name} className="mx-4 lg:mx-10 py-1">
                 {item.icon && (
                   <item.icon className="w-6 h-6 text-deepGray hover:cursor-pointer" />
                 )}
               </li>
             ))}
           </ul>
-          <ul className="flex items-center justify-center py-10">
+          <ul className="flex flex-col md:flex-row items-center justify-center py-4 md:py-10 px-3">
             {navigation.legal.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-lg text-black lg:mx-6 tracking-wide hover:text-deepGray font-dmsans font-semibold "
+                className="text-base py-2 md:py-0 md:text-lg text-black px-2 lg:mx-6 md:tracking-wide hover:text-deepGray font-dmsans md:font-semibold "
               >
                 {item.name}
               </Link>
             ))}
           </ul>
-          <p className="flex items-center justify-center text-[#6B7280] font-dmsans text-lg ">
+          <p className="flex items-center justify-center text-[#6B7280] font-dmsans text-lg py-2 pb-6 ">
             <span>© 2021 MovieBox by Adriana Eka Prayudha </span>
           </p>
         </div>

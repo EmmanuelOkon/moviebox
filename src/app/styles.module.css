@@ -9,7 +9,7 @@
 
 @media (max-width: 768px) {
   .heroPoster {
-    height: 90vh; /* Adjust the height as needed for smaller screens */
+    height: 90vh;
   }
 }
 

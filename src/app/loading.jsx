@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Loading() {
   return (
-    <div className="flex justify-center items-center bg-offWhite h-screen">
+    <div className="flex justify-center items-center bg-white h-screen">
       <Image
         className="w-1/2 md:w-[18%] h-auto"
         src="/assets/spinner.svg"

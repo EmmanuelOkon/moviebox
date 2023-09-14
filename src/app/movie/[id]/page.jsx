@@ -1,4 +1,3 @@
-// import Image from "next/image";
 import Sidebar from "./sidebar";
 
 async function getMovie(movieId) {
@@ -40,14 +39,7 @@ export default async function MoviePage({ params }) {
 
   return (
     <>
-      <Sidebar
-        movie={movieData}
-        year={year}
-        month={month}
-        day={day}
-        hours={hours}
-        minutes={minutes}
-      />
+      <Sidebar movie={movieData} year={year} hours={hours} minutes={minutes} />
     </>
   );
 }

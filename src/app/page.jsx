@@ -18,14 +18,12 @@ export default async function Home({ searchParams }) {
   await new Promise((resolve) => setTimeout(resolve, 2000));
 
   if (!res.ok) {
-    throw new Error("Failed to fetch data"); // this will be caught by the error page and passed to the page as props
+    throw new Error("Failed to fetch data");
   }
 
   const data = await res.json();
 
   const results = data.results.slice(0, 10);
-
-  console.log(results);
 
   return (
     <>

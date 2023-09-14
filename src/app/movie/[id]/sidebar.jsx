@@ -13,6 +13,8 @@ import { BsStarFill } from "react-icons/bs";
 import { IoTicketOutline } from "react-icons/io5";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { BsChevronDown } from "react-icons/bs";
+import Loading from "../../loading";
+import { FaDoorClosed } from "react-icons/fa";
 
 const navigation = [
   { name: "Home", href: "/", icon: HomeIcon, current: false },
@@ -26,8 +28,9 @@ function classNames(...classes) {
 }
 
 export default function Sidebar(props) {
-  const { movie, year, month, day, hours, minutes } = props;
+  const { movie, year, hours, minutes } = props;
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const isMovieDataAvailable = !!movie;
 
@@ -115,7 +118,7 @@ export default function Sidebar(props) {
                   ))}
                 </nav>
 
-                <div className="border-rose border-2 px-4 mx-4 rounded-[20px] font-poppins text-offBlack py-6">
+                <div className="border-rose border-2 mt-4 px-4 mx-4 rounded-[20px] font-poppins text-offBlack py-6">
                   <p className="font-semibold text-[16px] tracking-normal leading- pb-5 ">
                     Play movie quizes and earn <br /> free tickets
                   </p>
@@ -123,7 +126,7 @@ export default function Sidebar(props) {
                     50k people are playing now
                   </span>
                   <div className="mt-2 text-center">
-                    <button className=" rounded-[25px] bg-rose bg-opacity-20 text-rose p-[12px] px-[20px] hover:bg-opacity-70 hover:font-bold hover:text-white font-medium ">
+                    <button className=" rounded-[25px] bg-rose bg-opacity-20 text-rose p-[12px] px-[20px] hover:font-bold hover:text-white font-medium ">
                       Start playing
                     </button>
                   </div>
@@ -244,39 +247,46 @@ export default function Sidebar(props) {
         </div>
         <main className="flex-1 relative z-0 overflow-y-auto focus:outline-none">
           {isMovieDataAvailable && (
-            <div className="w-full bg-white">
-              <div className="py-4 md:pt-8 flex w-[80%] mx-auto md:w-full items-center justify-center content-center md:spacex-6">
-                <Image
-                  src={`https://image.tmdb.org/t/p/original/${
-                    props.movie.backdropPath || props.movie.posterPath
-                  }`}
-                  width={1000}
-                  height={10}
-                  className="rounded-md md:rounded-lg bg-contain bg-center  "
-                  style={{
-                    maxWidth: "100%",
-                  }}
-                  placeholder="blur"
-                  blurDataURL="/spinner.svg"
-                  alt={props.movie.title}
-                ></Image>
-              </div>
-            </div>
+            <>
+              {isLoading ? (
+                <Loading />
+              ) : (
+                <div className="w-full bg-white">
+                  <div className="py-4 md:pt-8 flex w-[80%] mx-auto md:w-full items-center justify-center content-center md:spacex-6">
+                    <Image
+                      src={`https://image.tmdb.org/t/p/original/${
+                        props.movie.backdropPath || props.movie.posterPath
+                      }`}
+                      width={1000}
+                      height={10}
+                      className="rounded-md md:rounded-lg bg-contain bg-center px-4 lg:px-0 "
+                      style={{
+                        maxWidth: "100%",
+                      }}
+                      placeholder="blur"
+                      blurDataURL="/spinner.svg"
+                      alt={props.movie.title}
+                      onLoadingComplete={() => setIsLoading(false)}
+                    ></Image>
+                  </div>
+                </div>
+              )}
+            </>
           )}
-          <div className="px-4 sm:px-6 md:px-8 grid grid-cols-3 gap-6 py-2 md:py-6 pb-4">
+          <div className="px-4 sm:px-6 md:px-8 grid grid-cols-1 lg:grid-cols-3 lg:gap-6 py-2 md:py-6 pb-4">
             <div className="col-span-2 bg-white ">
               <div className="">
-                <div className="text-center text-white w-full flex items-center">
-                  <p className="flex items-center  wfit rounded-md text-[18px] md:text-xl font-bold md:font-black text-deepGray font-poppins">
+                <div className="text-center text-white w-full flex flex-col md:flex-row items-center">
+                  <p className="flex items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins">
                     {props.movie.title || props.movie.name}
-                    <span className="mx-2">•</span>
+                    <span className="mx-1 lg:mx-2">•</span>
                     {year}
-                    <span className="mx-2">•</span>
+                    <span className="mx-1 lg:mx-2">•</span>
                     PG-13
-                    <span className="mx-2">•</span>
+                    <span className="mx-1 lg:mx-2">•</span>
                     {hours}h {minutes}m
                   </p>
-                  <div className="ml-2 flex items-center gap-2">
+                  <div className="ml-2 sm:ml-0 flex items-center gap-2 pt-3 md:py-0 ">
                     <span className="border border-offWhite text-deepRose rounded-2xl text-[14px] font-medium px-[10px] py-[1px] ">
                       Action
                     </span>
@@ -309,16 +319,16 @@ export default function Sidebar(props) {
                     Tom Cruise, Jennifer Connelly, Miles Teller
                   </p>
                   <div className="flex w-full mb-3 border-t-2 border-[#E8E8E8] pt-3 ">
-                    <div className="grid grid-cols-3 w-full border-2 border-rose rounded-xl">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 w-full border-2 border-[#E8E8E8] rounded-xl">
                       <div className="col-span-1 w-full">
                         <button className="bg-rose hover:bg-offWhite text-white hover:text-rose w-full rounded-xl flex items-center justify-center py-4">
-                          <span className=" font-medium text-lg font-poppins">
+                          <span className=" font-medium text-base md:text-lg font-poppins">
                             Top rated movies #65
                           </span>
                         </button>
                       </div>
                       <div className="col-span-2 w-full flex items-center px-3 justify-between">
-                        <span className="font-medium text-lg font-poppins">
+                        <span className="font-medium text-base py-4 lg:py-0 md:text-lg font-poppins">
                           Awards 9 nominations
                         </span>
                         <BsChevronDown
@@ -333,7 +343,7 @@ export default function Sidebar(props) {
             </div>
             <div className="col-span-1">
               <div className="w-full grid grid-cols-1">
-                <div className="flex items-center justify-end gap-2 ">
+                <div className="flex items-center justify-start lg:justify-end gap-2 ">
                   <BsStarFill
                     className="h-6 w-6 text-[#FFFF00]"
                     aria-hidden="true"

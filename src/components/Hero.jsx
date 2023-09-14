@@ -6,13 +6,13 @@ import Image from "next/image";
 const Hero = () => {
   return (
     <div className="flex flex-col lg:grid grid-cols-3  w-full lg:pb-20 pt-[3.2rem] lg:px-16">
-      <div className="m-auto py5 text-center lg:text-left  ">
-        <div className="lg:w-full lg:mx-0 w-[70%] mx-auto  ">
+      <div className="m-auto py5 text-center lg:text-left">
+        <div className="lg:w-full lg:mx-0 w-[70%] mx-auto">
           <h1 className="font-dmsans text-[2.2rem] leading-tight lg:leading-[1.2] lg:tracking-wider font-bold text-white lg:text-5xl">
             John Wick 3 : Parabellum
           </h1>
           <div className="flex gap-6 text-white justify-center lg:justify-start py-3 ">
-            <span className="flex items-center gap-3 font-dmsans">
+            <span className="flex items-center gap-1 lg:gap-3 font-dmsans">
               <Image
                 src="/assets/imdbb.png"
                 className="w-14 "
@@ -22,7 +22,7 @@ const Hero = () => {
               />
               86.0 / 100
             </span>
-            <span className="flex items-center gap-3 font-dmsans">
+            <span className="flex items-center gap-1 lg:gap-3 font-dmsans">
               <Image
                 src="/assets/tomatoe.png"
                 className="w-6"
@@ -56,7 +56,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      {/* <div className="flex-1 pb-5"></div> */}
     </div>
   );
 };

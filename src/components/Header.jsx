@@ -4,13 +4,10 @@ import React, { useState } from "react";
 import SearchBox from "./SearchBox";
 import styles from "../app/styles.module.css";
 
-// import Image from "next/image";
 import Navbar from "./Navbar";
-import Nav from "./Nav";
 import Hero from "./Hero";
-// import Link from "next/link";
 
-export default function Header() {
+export default function Header({ navbarStyles }) {
   const [activeItem, setActiveItem] = useState("/");
 
   //   const handleItemClick = (address) => {
@@ -19,9 +16,9 @@ export default function Header() {
 
   return (
     <div
-      className={`${styles.heroPoster} bg-rose lg:fle items-center justify-between sm:mx-auto`}
+      className={`${styles.heroPoster} bg-rose items-center justify-between sm:mx-auto`}
     >
-      <Navbar />
+      <Navbar navbarStyles={navbarStyles} />
       <Hero />
     </div>
   );

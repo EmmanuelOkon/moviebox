@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Results from "@/components/Results";
 
@@ -12,7 +13,7 @@ export default async function SearchPage({ params }) {
 
   const data = await res.json();
 
-  const results = data.results;
+  const results = data.results.slice(0, 10);
 
   return (
     <div>
@@ -23,7 +24,13 @@ export default async function SearchPage({ params }) {
       {results && (
         <>
           <Navbar />
+          <div className="fle">
+            <h1 className="text-center pt-6">
+              Search results for: {params.searchTerm}
+            </h1>
+          </div>
           <Results results={results} />
+          <Footer />
         </>
       )}
     </div>

@@ -14,30 +14,39 @@ export default function SearchBox() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className={`hidde lg:flex border-2 px-4 border-white rounded-[6px] w-[50%] mxauto justify-between items-center px5 `}
-    >
-      <input
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        type="text"
-        placeholder="What do you want to watch?"
-        className="w-full h-12 text-blue bg-rose font-dmsans bg-opacity-0 placeholder-white outline-none "
-      />
-      <BiSearch
-        className="h-8 w-8 outline-0   "
-        // strokeWidth="0.1"
-        stroke="#FFF"
-        aria-hidden="true"
-      />
-      {/* <button
-        // disabled={!search}
-        type="submit"
-        className="text-black h-14 px-4 rounded-r-md  bg-amber-600 hover:bg-amber-700 disabled:bg-gray-400 disabled:text-gray-300"
+    <>
+      <form
+        onSubmit={handleSubmit}
+        className="hidden lg:flex border-2 px-4 border-white rounded-[6px] w-[50%] justify-between items-center 
+      "
       >
-        
-      </button> */}
-    </form>
+        <input
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          type="text"
+          placeholder="What do you want to watch?"
+          className="w-full h-12 font-medium placeholder:font-medium text-white bg-rose font-dmsans bg-opacity-0 placeholder-white outline-none"
+        />
+        <button
+          disabled={!search}
+          type="submit"
+          className="text-white h-8 hover:cursor-pointer"
+        >
+          <BiSearch
+            className="h-8 w-8 outline-0"
+            stroke="#FFF"
+            aria-hidden="true"
+          />
+        </button>
+      </form>
+
+      <div className="hidden">
+        <BiSearch
+          className="h-8 w-8 outline-0"
+          stroke="#FFF"
+          aria-hidden="true"
+        />
+      </div>
+    </>
   );
 }
