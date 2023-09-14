@@ -9,12 +9,14 @@ import { BsCalendar3 } from "react-icons/bs";
 import { TbLogout } from "react-icons/tb";
 import Image from "next/image";
 import Link from "next/link";
+import { BsStarFill } from "react-icons/bs";
+import { IoTicketOutline } from "react-icons/io5";
 
 const navigation = [
-  { name: "Home", href: "#", icon: HomeIcon, current: false },
+  { name: "Home", href: "/", icon: HomeIcon, current: false },
   { name: "Movies", href: "#", icon: BiCameraMovie, current: true },
-  { name: "TV Series", href: "#", icon: PiMonitorPlayBold, current: false },
-  { name: "Upcoming", href: "#", icon: BsCalendar3, current: false },
+  { name: "TV Series", href: "/", icon: PiMonitorPlayBold, current: false },
+  { name: "Upcoming", href: "/", icon: BsCalendar3, current: false },
 ];
 
 function classNames(...classes) {
@@ -22,17 +24,17 @@ function classNames(...classes) {
 }
 
 export default function Sidebar(props) {
-  const { movie, monthName } = props;
+  const { movie, year, month, day, hours, minutes } = props;
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const isMovieDataAvailable = !!movie;
 
   return (
-    <div className="h-screen flex overflow-hidden bg-lightGray">
+    <div className="h-screen flex overflow-hidden">
       <Transition.Root show={sidebarOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 flex z-40 md:hidden"
+          className="fixed inset-0 flex z-40 md:hidden bg-deepGray bg-opacity-60"
           onClose={setSidebarOpen}
         >
           <Transition.Child
@@ -44,7 +46,7 @@ export default function Sidebar(props) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="fixed inset-0 bg-gray-600 bg-opacity-75" />
+            <Dialog.Overlay className="fixed inset-0 " />
           </Transition.Child>
           <Transition.Child
             as={Fragment}
@@ -65,13 +67,13 @@ export default function Sidebar(props) {
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <div className="absolute top-0 right-0 -mr-12 pt-2">
+                <div className="absolute top-0 right-3 pt-3">
                   <button
                     type="button"
-                    className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                    className="ml-1 flex items-center border-2 border-rose justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                     onClick={() => setSidebarOpen(false)}
                   >
-                    <XIcon className="h-6 w-6 text-white" aria-hidden="true" />
+                    <XIcon className="h-6 w-6 text-rose" aria-hidden="true" />
                   </button>
                 </div>
               </Transition.Child>
@@ -90,63 +92,67 @@ export default function Sidebar(props) {
                     MovieBox
                   </Link>
                 </div>
-                <nav className="mt-5 px-2 space-y-1">
+                <nav className="mt-5 space-y-1">
                   {navigation.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
                       className={classNames(
                         item.current
-                          ? "bg-indigo-800 text-white"
-                          : "text-white hover:bg-indigo-600 hover:bg-opacity-75",
-                        "group flex items-center px-2 py-2 text-base font-medium rounded-md"
+                          ? "bg-rose bg-opacity-10 text-rose border-r-[6px] border-rose font-bold "
+                          : "text-midGray hover:bg-rose hover:bg-opacity-10 hover:text-rose",
+                        "group flex items-center py-5 text-base font-medium px-4"
                       )}
                     >
                       <item.icon
-                        className="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"
+                        className="mr-4 flex-shrink-0 h-6 w-6"
                         aria-hidden="true"
                       />
                       {item.name}
                     </Link>
                   ))}
                 </nav>
-              </div>
-              <div className="flex-shrink-0 flex border-t border-indigo-800 p-4">
-                <Link href="#" className="flex-shrink-0 group block">
-                  <div className="flex items-center bg-rose">
-                    <Link href="#" className="flex-shrink-0 w-full group block">
-                      <div className="flex items-center ">
-                        <TbLogout />
-                        <div className="ml-3">
-                          <p className="text-lg font-medium font-poppins text-offBlack">
-                            Log out
-                          </p>
-                        </div>
-                      </div>
-                    </Link>
-                    <div className="ml-3">
-                      <p className="text-base font-medium text-white">
-                        Tom Cook home
-                      </p>
-                      <p className="text-sm font-medium text-indigo-200 group-hover:text-white">
-                        View profile
-                      </p>
-                    </div>
+
+                <div className="border-rose border-2 px-4 mx-4 rounded-[20px] font-poppins text-offBlack py-6">
+                  <p className="font-semibold text-[16px] tracking-normal leading- pb-5 ">
+                    Play movie quizes and earn <br /> free tickets
+                  </p>
+                  <span className="font-medium text-base ">
+                    50k people are playing now
+                  </span>
+                  <div className="mt-2 text-center">
+                    <button className=" rounded-[25px] bg-rose bg-opacity-20 text-rose p-[12px] px-[20px] hover:bg-opacity-70 hover:font-bold hover:text-white font-medium ">
+                      Start playing
+                    </button>
                   </div>
-                </Link>
+                </div>
+              </div>
+
+              <div className="flex-shrink-0 flex p-4">
+                <div className="flex items-center">
+                  <Link href="#" className="flex-shrink-0 w-full group block">
+                    <div className="flex items-center ">
+                      <TbLogout
+                        className="mr-3 flex-shrink-0 h-6 w-6"
+                        aria-hidden="true"
+                      />
+                      <div className="ml-3">
+                        <p className="text-lg font-medium font-poppins text-offBlack">
+                          Log out
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
               </div>
             </div>
           </Transition.Child>
-          <div className="flex-shrink-0 w-14" aria-hidden="true">
-            {/* Force sidebar to shrink to fit close icon */}
-          </div>
         </Dialog>
       </Transition.Root>
 
       {/* Static sidebar for desktop */}
-      <div className="hidden bg-white rounded-e-[35px] text-deepGray md:flex md:flex-shrink-0">
+      <div className="hidden bg-white border border-black border-opacity-30 rounded-e-[35px] text-deepGray md:flex md:flex-shrink-0">
         <div className="flex flex-col w-64">
-          {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex-1 flex flex-col min-h-0">
             <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
               <div className="flex items-center flex-shrink-0 px-4">
@@ -172,7 +178,7 @@ export default function Sidebar(props) {
                       item.current
                         ? "bg-rose bg-opacity-10 text-rose border-r-[6px] border-rose font-bold "
                         : "text-midGray hover:bg-rose hover:bg-opacity-10 hover:text-rose",
-                      "group flex items-center px-2 py-5 text-base font-medium"
+                      "group flex items-center px-4 py-5 text-base font-medium"
                     )}
                   >
                     <item.icon
@@ -183,24 +189,28 @@ export default function Sidebar(props) {
                   </Link>
                 ))}
               </nav>
-            </div>
-            <div className="border-rose border-2 px-4 mx-4 rounded-[20px] font-poppins text-offBlack py-6">
-              <p className="font-semibold text-[20px] tracking-wide leading-6 pb-5 ">
-                Play movie quizes and earn <br /> free tickets
-              </p>
-              <span className="font-medium text-lg ">
-                50k people are playing now
-              </span>
-              <div className="mt-4 text-center">
-                <button className=" rounded-[30px] bg-rose bg-opacity-20 text-rose p-[14px] px-[26px] hover:bg-opacity-70 hover:font-bold hover:text-white font-medium ">
-                  Start playing
-                </button>
+              <div className="border-rose border-2 px-4 mx-4 rounded-[20px] font-poppins text-offBlack py-6">
+                <p className="font-semibold text-[20px] tracking-wide leading-6 pb-5 ">
+                  Play movie quizes and earn <br /> free tickets
+                </p>
+                <span className="font-medium text-lg ">
+                  50k people are playing now
+                </span>
+                <div className="mt-4 text-center">
+                  <button className=" rounded-[30px] bg-rose bg-opacity-20 text-rose p-[14px] px-[26px] hover:bg-opacity-70 hover:font-bold hover:text-white font-medium ">
+                    Start playing
+                  </button>
+                </div>
               </div>
             </div>
+
             <div className="flex-shrink-0 flex rounded-ee-[35px]  p-4">
               <Link href="#" className="flex-shrink-0 w-full group block">
                 <div className="flex items-center ">
-                  <TbLogout />
+                  <TbLogout
+                    className="mr-3 flex-shrink-0 h-6 w-6"
+                    aria-hidden="true"
+                  />
                   <div className="ml-3">
                     <p className="text-lg font-medium font-poppins text-offBlack">
                       Log out
@@ -213,74 +223,124 @@ export default function Sidebar(props) {
         </div>
       </div>
 
-      <div className="flex flex-col w-0 flex-1 overflow-hidden">
-        <div className="md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3">
+      <div className="flex flex-col w-0 flex-1 overflow-hidden ">
+        <div className="md:hidden flex justify-between items-center px-3 py-2 ">
+          <Link
+            className="text-base font-bold flex items-center gap-2 font-poppins outline-0"
+            href="/"
+          >
+            <Image src="/assets/logo.png" alt="logo" width={40} height={40} />
+            MovieBox
+          </Link>
           <button
             type="button"
-            className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+            className="-ml-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md  focus:outline-0 focus:ring-inset focus:ring-0 "
             onClick={() => setSidebarOpen(true)}
           >
-            <MenuIcon className="h-6 w-6" aria-hidden="true" />
+            <MenuIcon className="h-6 w-6 text-rose" aria-hidden="true" />
           </button>
         </div>
         <main className="flex-1 relative z-0 overflow-y-auto focus:outline-none">
-          <div className="py-6 bg-rose">
-            {isMovieDataAvailable && (
-              <div className="w-full bg-rose">
-                <div className="w-full bg-rose">
-                  <div className="p-4 md:pt-8 flex flex-col md:flex-row items-center content-center max-w-6xl mx-auto md:space-x-6">
-                    <Image
-                      src={`https://image.tmdb.org/t/p/original/${
-                        movie.backdrop_path || movie.poster_path
-                      }`}
-                      width={500}
-                      height={300}
-                      className="rounded-lg"
-                      style={{
-                        maxWidth: "100%",
-                        height: "100%",
-                      }}
-                      placeholder="blur"
-                      blurDataURL="/spinner.svg"
-                      alt={movie.title}
-                    ></Image>
-                    <div className="p-2">
-                      <h2 className="text-[24px] md:text-3xl mb-3 font-bold text-amber-500">
-                        {movie.title || movie.name}
-                      </h2>
-                      <p className="text-lg mb-3 text-justify">
-                        <span className="font-semibold mr-1 text-amber-500">
-                          Overview:
-                        </span>
-                        {movie.overview}
-                      </p>
-                      <p className="mb-3">
-                        <span className="font-semibold mr-1 text-amber-500">
-                          Date Released:
-                        </span>
-                        {monthName} {releaseDate.substr(8, 2)},{" "}
-                        {releaseDate.substr(0, 4)}
-                      </p>
-                      <p className="mb-3">
-                        <span className="font-semibold mr-1 text-amber-500">
-                          Rating:
-                        </span>
-                        {movie.vote_count} likes
-                      </p>
-                    </div>
+          {isMovieDataAvailable && (
+            <div className="w-full bg-white">
+              <div className="py-4 md:pt-8 flex w-[80%] mx-auto md:w-full items-center justify-center content-center md:spacex-6">
+                <Image
+                  src={`https://image.tmdb.org/t/p/original/${
+                    props.movie.backdropPath || props.movie.posterPath
+                  }`}
+                  width={1000}
+                  height={10}
+                  className="rounded-md md:rounded-lg bg-contain bg-center  "
+                  style={{
+                    maxWidth: "100%",
+                  }}
+                  placeholder="blur"
+                  blurDataURL="/spinner.svg"
+                  alt={props.movie.title}
+                ></Image>
+              </div>
+            </div>
+          )}
+          <div className="px-4 sm:px-6 md:px8 grid grid-cols-3 gap-6">
+            <div className="col-span-2 bg-white ">
+              <div className="bg-">
+                <div className="text-center text-white w-full flex items-center">
+                  <p className="flex items-center  w-fit rounded-md text-[18px] md:text-2xl font-bold text-deepGray font-poppins">
+                    {props.movie.title || props.movie.name}
+                    <span className="mx-2">•</span>
+                    {year}
+                    <span className="mx-2">•</span>
+                    PG-13
+                    <span className="mx-2">•</span>
+                    {hours}h {minutes}m
+                  </p>
+                  <div className="ml-2 flex items-center gap-2">
+                    <span className="border border-offWhite text-deepRose rounded-2xl text-[14px] font-medium px-[10px] py-[1px] ">
+                      Action
+                    </span>
+                    <span className="border border-offWhite text-deepRose rounded-2xl text-[14px] font-medium px-[10px] py-[1px]">
+                      Drama
+                    </span>
                   </div>
                 </div>
+                <p className="text-lg font-poppins text-offBlack text-justify mt-4">
+                  {props.movie.overview}
+                </p>
+
+                <div className="divide-y divide-[#E8E8E8] divide-opacity-25 ">
+                  <p className="my-3 py-3 text-rose text-lg border-t border-[#E8E8E8] border-opacity-25 font-poppins ">
+                    <span className="font-normal text-lg mr-1 text-offBlack ">
+                      Director :
+                    </span>
+                    Joseph Kosinski
+                  </p>
+                  <p className="my-3 py-3 text-rose text-lg font-poppins ">
+                    <span className="font-normal text-lg mr-1 text-offBlack ">
+                      Writers :
+                    </span>
+                    Jim Cash, Jack Epps Jr, Peter Craig
+                  </p>
+                  <p className="my-3 py-3 text-rose text-lg font-poppins ">
+                    <span className="font-normal text-lg mr-1 text-offBlack ">
+                      Stars :
+                    </span>
+                    Tom Cruise, Jennifer Connelly, Miles Teller
+                  </p>
+                </div>
               </div>
-            )}
-            {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-              <h1 className="text-2xl font-semibold text-gray-900">
-                Dashboard
-              </h1>
-            </div> */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-              {/* Replace with your content */}
-              <div className="py-4">Hello there</div>
-              {/* /End replace */}
+            </div>
+            <div className="col-span-1">
+              <div className="w-full grid grid-cols-1">
+                <div className="flex items-center justify-end gap-2 ">
+                  <BsStarFill
+                    className="h-6 w-6 text-[#FFFF00]"
+                    aria-hidden="true"
+                  />
+                  <div className="flex items-center">
+                    <span className="text-lightGray font-normal text-lg ">
+                      {props.movie.voteAverage}
+                    </span>
+                    <span className="text-offBlack px-2 font-extrabold">|</span>
+                    <span className="text-offBlack font-normal text-lg ">
+                      {props.movie.voteCount}
+                    </span>
+                  </div>
+                </div>
+
+                <p className="mb-3">
+                  <span className="font-semibold mr-1 ">Rating:</span>
+                  {props.movie.popularity}
+                </p>
+                <button className="bg-rose w-full rounded-xl flex items-center justify-center py-4 gap-3">
+                  <IoTicketOutline
+                    className="h-7 w-7 text-white"
+                    aria-hidden="true"
+                  />
+                  <span className="text-white font-medium text-lg font-poppins">
+                    See Showtimes
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </main>

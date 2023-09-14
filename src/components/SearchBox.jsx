@@ -12,10 +12,11 @@ export default function SearchBox() {
     if (!search) return;
     router.push(`/search/${search}`);
   }
+
   return (
     <form
       onSubmit={handleSubmit}
-      className="hidden lg:flex border-2 px-4 border-white rounded-[6px] w-[50%] mxauto justify-between items-center px5 "
+      className={`hidde lg:flex border-2 px-4 border-white rounded-[6px] w-[50%] mxauto justify-between items-center px5 `}
     >
       <input
         value={search}

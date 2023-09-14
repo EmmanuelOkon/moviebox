@@ -11,7 +11,7 @@ const Hero = () => {
           <h1 className="font-dmsans text-[2.2rem] leading-tight lg:leading-[1.2] lg:tracking-wider font-bold text-white lg:text-5xl">
             John Wick 3 : Parabellum
           </h1>
-          <div className="flex gap-6 text-white ">
+          <div className="flex gap-6 text-white justify-center lg:justify-start py-3 ">
             <span className="flex items-center gap-3 font-dmsans">
               <Image
                 src="/assets/imdbb.png"
@@ -33,7 +33,7 @@ const Hero = () => {
               97%
             </span>
           </div>
-          <p className="mt-3 tracking-wide max-w-md font-medium font-dmsans text-white text-lg sm:text-xl md:mt-5 md:max-w-3xl">
+          <p className="mt-3 tracking-wide max-w-md font-medium font-dmsans text-white text-lg sm:text-xl lg:mt-5 md:max-w-3xl">
             {`
           John Wick is on the run after killing a member of the international assassins' guild, and with a $14 million price tag on his head, he is the target of hit men and women everywhere.`}
           </p>

@@ -8,19 +8,12 @@ async function getMovie(movieId) {
   return await res.json();
 }
 
-function getMonthName(dateString) {
-  const date = new Date(dateString);
-  const options = {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
-  try {
-    return new Intl.DateTimeFormat("en-US", options).format(date);
-  } catch (error) {
-    console.error("Error formatting date:", error);
-    return "";
+function formatVoteCount(voteCount) {
+  if (voteCount >= 1000) {
+    const kVoteCount = Math.floor(voteCount / 1000);
+    return `${kVoteCount}k`;
+  } else {
+    return voteCount.toString();
   }
 }
 
@@ -29,70 +22,32 @@ export default async function MoviePage({ params }) {
   const movie = await getMovie(movieId);
 
   const releaseDate = movie.release_date;
-  const monthName = getMonthName(releaseDate);
+  const [year, month, day] = releaseDate.split("-");
+
+  const totalMinutes = movie.runtime;
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
 
   const movieData = {
     title: movie.title,
     overview: movie.overview,
-    releaseDate: movie.release_date,
-    voteCount: movie.vote_count,
+    voteCount: formatVoteCount(movie.vote_count),
     backdropPath: movie.backdrop_path,
     posterPath: movie.poster_path,
+    popularity: movie.popularity,
+    voteAverage: movie.vote_average,
   };
 
   return (
     <>
       <Sidebar
-        // {...movieData}
         movie={movieData}
-        // monthName={monthName}
-        // releaseDate={releaseDate}
+        year={year}
+        month={month}
+        day={day}
+        hours={hours}
+        minutes={minutes}
       />
     </>
   );
 }
-
-{
-  /* <div className="w-full bg-rose">
-        <div className="p-4 md:pt-8 flex flex-col md:flex-row items-center content-center max-w-6xl mx-auto md:space-x-6">
-          <Image
-            src={`https://image.tmdb.org/t/p/original/${
-              movie.backdrop_path || movie.poster_path
-            }`}
-            width={500}
-            height={300}
-            className="rounded-lg"
-            style={{
-              maxWidth: "100%",
-              height: "100%",
-            }}
-            placeholder="blur"
-            blurDataURL="/spinner.svg"
-            alt={movie.title}
-          ></Image>
-          <div className="p-2">
-            <h2 className="text-[24px] md:text-3xl mb-3 font-bold text-amber-500">
-              {movie.title || movie.name}
-            </h2>
-            <p className="text-lg mb-3 text-justify">
-              <span className="font-semibold mr-1 text-amber-500">
-                Overview:
-              </span>
-              {movie.overview}
-            </p>
-            <p className="mb-3">
-              <span className="font-semibold mr-1 text-amber-500">
-                Date Released:
-              </span>
-              {monthName} {releaseDate.substr(8, 2)}, {releaseDate.substr(0, 4)}
-            </p>
-            <p className="mb-3">
-              <span className="font-semibold mr-1 text-amber-500">Rating:</span>
-              {movie.vote_count} likes
-            </p>
-          </div>
-        </div>
-      </div> */
-}
-
-// https://www.themoviedb.org/movie

@@ -9,24 +9,6 @@ import "@fontsource/poppins";
 import Loading from "./loading";
 // import SearchBox from "@/components/SearchBox";
 
-// const inter = Inter({ subsets: ["latin"] });
-
-export const Metadata = {
-  title: "Movie Box",
-  description: "A database for movies",
-  keywords: [
-    "movie",
-    "movies",
-    "moviebox",
-    "clone",
-    "movie",
-    "database",
-    "react",
-    "next",
-    "tailwind",
-  ],
-};
-
 export default function RootLayout({ children }) {
   const [isLoading, setIsLoading] = useState(true);
 

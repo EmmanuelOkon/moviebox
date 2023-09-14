@@ -1,12 +1,13 @@
 const API_KEY = process.env.API_KEY;
 export const dynamic = "force-dynamic";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Results from "@/components/Results";
 import Link from "next/link";
 import { AiOutlineRight } from "react-icons/ai";
 
 export default async function Home({ searchParams }) {
-  const genre = searchParams.genre || "fetchTrending";
+  const genre = searchParams.genre || "fetchTopRated";
 
   const res = await fetch(
     `https://api.themoviedb.org/3/${
@@ -30,7 +31,7 @@ export default async function Home({ searchParams }) {
     <>
       <Header />
       <div className="bg-white">
-        <div className="flex justify-between lg:px-16">
+        <div className="flex justify-between px-4 py-3 lg:py-10 lg:px-16 ">
           <span className="text-black font-dmsans text-3xl font-bold ">
             Featured Movie
           </span>
@@ -43,6 +44,7 @@ export default async function Home({ searchParams }) {
           </Link>
         </div>
         <Results results={results} />
+        <Footer />
       </div>
     </>
   );
