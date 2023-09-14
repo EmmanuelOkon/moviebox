@@ -11,6 +11,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { BsStarFill } from "react-icons/bs";
 import { IoTicketOutline } from "react-icons/io5";
+import { TfiMenuAlt } from "react-icons/tfi";
+import { BsChevronDown } from "react-icons/bs";
 
 const navigation = [
   { name: "Home", href: "/", icon: HomeIcon, current: false },
@@ -261,11 +263,11 @@ export default function Sidebar(props) {
               </div>
             </div>
           )}
-          <div className="px-4 sm:px-6 md:px8 grid grid-cols-3 gap-6">
+          <div className="px-4 sm:px-6 md:px-8 grid grid-cols-3 gap-6 py-2 md:py-6 pb-4">
             <div className="col-span-2 bg-white ">
-              <div className="bg-">
+              <div className="">
                 <div className="text-center text-white w-full flex items-center">
-                  <p className="flex items-center  w-fit rounded-md text-[18px] md:text-2xl font-bold text-deepGray font-poppins">
+                  <p className="flex items-center  wfit rounded-md text-[18px] md:text-xl font-bold md:font-black text-deepGray font-poppins">
                     {props.movie.title || props.movie.name}
                     <span className="mx-2">•</span>
                     {year}
@@ -283,29 +285,49 @@ export default function Sidebar(props) {
                     </span>
                   </div>
                 </div>
-                <p className="text-lg font-poppins text-offBlack text-justify mt-4">
+                <p className="text-lg font-poppins text-offBlack text-justify my-4">
                   {props.movie.overview}
                 </p>
 
                 <div className="divide-y divide-[#E8E8E8] divide-opacity-25 ">
-                  <p className="my-3 py-3 text-rose text-lg border-t border-[#E8E8E8] border-opacity-25 font-poppins ">
+                  <p className="py-3 text-rose text-lg border-t border-[#E8E8E8] border-opacity-25 font-poppins ">
                     <span className="font-normal text-lg mr-1 text-offBlack ">
                       Director :
                     </span>
                     Joseph Kosinski
                   </p>
-                  <p className="my-3 py-3 text-rose text-lg font-poppins ">
+                  <p className="py-3 text-rose text-lg font-poppins ">
                     <span className="font-normal text-lg mr-1 text-offBlack ">
                       Writers :
                     </span>
                     Jim Cash, Jack Epps Jr, Peter Craig
                   </p>
-                  <p className="my-3 py-3 text-rose text-lg font-poppins ">
+                  <p className="py-3 text-rose text-lg font-poppins ">
                     <span className="font-normal text-lg mr-1 text-offBlack ">
                       Stars :
                     </span>
                     Tom Cruise, Jennifer Connelly, Miles Teller
                   </p>
+                  <div className="flex w-full mb-3 border-t-2 border-[#E8E8E8] pt-3 ">
+                    <div className="grid grid-cols-3 w-full border-2 border-rose rounded-xl">
+                      <div className="col-span-1 w-full">
+                        <button className="bg-rose hover:bg-offWhite text-white hover:text-rose w-full rounded-xl flex items-center justify-center py-4">
+                          <span className=" font-medium text-lg font-poppins">
+                            Top rated movies #65
+                          </span>
+                        </button>
+                      </div>
+                      <div className="col-span-2 w-full flex items-center px-3 justify-between">
+                        <span className="font-medium text-lg font-poppins">
+                          Awards 9 nominations
+                        </span>
+                        <BsChevronDown
+                          className="h-7 w-7 text-lightGray"
+                          aria-hidden="true"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -326,20 +348,33 @@ export default function Sidebar(props) {
                     </span>
                   </div>
                 </div>
-
-                <p className="mb-3">
-                  <span className="font-semibold mr-1 ">Rating:</span>
-                  {props.movie.popularity}
-                </p>
-                <button className="bg-rose w-full rounded-xl flex items-center justify-center py-4 gap-3">
-                  <IoTicketOutline
-                    className="h-7 w-7 text-white"
-                    aria-hidden="true"
-                  />
-                  <span className="text-white font-medium text-lg font-poppins">
+                <button className="mt-4 bg-rose hover:bg-offWhite text-white hover:text-rose w-full rounded-xl flex items-center justify-center py-4 gap-3 border-2 border-rose">
+                  <IoTicketOutline className="h-7 w-7" aria-hidden="true" />
+                  <span className=" font-medium text-lg font-poppins">
                     See Showtimes
                   </span>
                 </button>
+                <button className="mt-4 bg-offWhite hover:bg-rose text-offBlack hover:text-offWhite border-2 border-rose w-full rounded-xl flex items-center justify-center py-4 gap-3">
+                  <TfiMenuAlt className="h-7 w-7" aria-hidden="true" />
+                  <span className="font-medium text-lg font-poppins">
+                    See Showtimes
+                  </span>
+                </button>
+                <div className="mt-4 relative ">
+                  <Image
+                    src="/assets/bestMovies.png"
+                    className="w-full h-auto"
+                    width={100}
+                    height={100}
+                    alt="bestMovies"
+                  />
+                  <span className="absolute bottom-0 px-[10px] text-[#E8E8E8] bg-[#121212] bg-opacity-40 rounded-[10px] w-full flex gap-2 justify-stretch items-center py-3 ">
+                    <TfiMenuAlt className="h-7 w-7" aria-hidden="true" />
+                    <span className="font-medium text-[15px] font-poppins">
+                      The Best Movies and Shows in September
+                    </span>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
