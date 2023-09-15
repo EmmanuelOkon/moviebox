@@ -23,9 +23,22 @@ export default async function MoviePage({ params }) {
   const releaseDate = movie.release_date;
   const [year, month, day] = releaseDate.split("-");
 
-  const totalMinutes = movie.runtime;
-  const hours = Math.floor(totalMinutes / 60);
-  const minutes = totalMinutes % 60;
+  const monthAbbreviations = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const abbreviatedMonth = monthAbbreviations[parseInt(month) - 1];
 
   const movieData = {
     title: movie.title,
@@ -35,11 +48,13 @@ export default async function MoviePage({ params }) {
     posterPath: movie.poster_path,
     popularity: movie.popularity,
     voteAverage: movie.vote_average,
+    runtime: movie.runtime,
+    relDate: `${day}/${abbreviatedMonth}/${year}`,
   };
 
   return (
     <>
-      <Sidebar movie={movieData} year={year} hours={hours} minutes={minutes} />
+      <Sidebar movie={movieData} year={year} />
     </>
   );
 }

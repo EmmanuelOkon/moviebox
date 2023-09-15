@@ -4,7 +4,11 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { BiSearch } from "react-icons/bi";
 
-export default function SearchBox({ styles }) {
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
+export default function SearchBox({ searchPage }) {
   const [search, setSearch] = useState("");
   const router = useRouter();
   function handleSubmit(e) {
@@ -20,23 +24,30 @@ export default function SearchBox({ styles }) {
     <>
       <form
         onSubmit={handleSubmit}
-        className={`mx-3 flex h-10 border-2 px-2 md:px-4 border-${
-          styles.borderColor || "white"
-        } rounded-[6px] w-full lg:w-full justify-between items-center `}
+        className={classNames(
+          searchPage ? "border-deepGray  " : "border-white  ",
+          "mx-3 flex h-10 border-[3px] px-2 md:px-4 rounded-[6px] w-full lg:w-full justify-between items-center"
+        )}
       >
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           type="text"
           placeholder={placeholderText}
-          className={`w-full flex items-center font-medium placeholder:text-sm placeholder-${
-            styles.placeholderColor || "font-normal"
-          } md:placeholder:font-medium text-white bg-rose font-dmsans bg-opacity-0 placeholder-white outline-none`}
+          className={classNames(
+            searchPage
+              ? "placeholder-deepGray text-deepGray bg-white"
+              : "placeholder-white text-white bg-rose",
+            "w-full flex items-center font-semibold placeholder:text-sm placeholder-font-normal md:placeholder:font-semibold  font-dmsans bg-opacity-0 outline-none"
+          )}
         />
         <button
           disabled={!search}
           type="submit"
-          className="text-white flex h-6 lg:h-8 hover:cursor-pointer"
+          className={classNames(
+            searchPage ? "text-deepGray" : "text-white",
+            " flex h-6 lg:h-8 hover:cursor-pointer"
+          )}
         >
           <BiSearch
             className="h-6 w-6 lg:h-8 lg:w-8 outline-0"
@@ -62,11 +73,3 @@ export default function SearchBox({ styles }) {
     </>
   );
 }
-
-// const defaultStyles = {
-//   container:
-//     "mx-3 flex h-10 border-2 px-2 md:px-4 border-white rounded-[6px] w-full lg:w-full justify-between items-center",
-//   input:
-//     "w-full flex items-center font-medium placeholder:text-sm placeholder:font-normal md:placeholder:font-medium text-white bg-rose font-dmsans bg-opacity-0 placeholder-white outline-none",
-//   button: "",
-// };

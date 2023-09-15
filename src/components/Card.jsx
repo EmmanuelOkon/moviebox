@@ -6,11 +6,11 @@ import { FaHeart } from "react-icons/fa";
 
 export default function Card({ result }) {
   const releaseDate = result.release_date;
-  const [year, month, day] = releaseDate.split("-");
+  const [year] = releaseDate.split("-");
 
   return (
     <div className="my-[20px] bg-ros cursor-pointer sm:hover:shadow-md transition-shadow duration-200 group">
-      <Link className="" href={`/movie/${result.id}`}>
+      <Link className="" href={`/movie/${result.id}`} data-testid="movie-card">
         <div className="flex relative">
           <Image
             src={`https://image.tmdb.org/t/p/original/${
@@ -26,14 +26,21 @@ export default function Card({ result }) {
             placeholder="blur"
             blurDataURL="/spinner.svg"
             alt={result.title}
+            data-testid="movie-poster"
           ></Image>
           <FaHeart className="text-lightGray bg-lightGray bg-opacity-30 p-2 rounded-full w-8 h-8 absolute right-0 mr-2 mt-2 cursor-pointer" />
         </div>
         <div className="py-2 px-3 flex flex-col justify-between">
-          <span className="text-lightGray text-[12px] font-semibold tracking-widest  ">
+          <span
+            className="text-lightGray text-[12px] font-semibold tracking-widest"
+            data-testid="movie-release-date"
+          >
             USA, {year}
           </span>
-          <h2 className="font-dmsans text-[24px] md:text-2xl font-bold text-deepGray">
+          <h2
+            className="font-dmsans text-[24px] md:text-2xl font-bold text-deepGray"
+            data-testid="movie-title"
+          >
             {result.title || result.name}
           </h2>
           <div className="flex justify-between text-deepGray ">

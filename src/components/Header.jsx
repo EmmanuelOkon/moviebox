@@ -18,7 +18,7 @@ export default function Header({ navbarStyles }) {
     <div
       className={`${styles.heroPoster} bg-rose items-center justify-between sm:mx-auto`}
     >
-      <Navbar navbarStyles={navbarStyles} />
+      <Navbar homePage={true} />
       <Hero />
     </div>
   );

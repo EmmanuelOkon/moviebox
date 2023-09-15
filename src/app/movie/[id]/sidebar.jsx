@@ -28,7 +28,7 @@ function classNames(...classes) {
 }
 
 export default function Sidebar(props) {
-  const { movie, year, hours, minutes } = props;
+  const { movie, year } = props;
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -284,11 +284,12 @@ export default function Sidebar(props) {
                   <p className="flex items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins">
                     {props.movie.title || props.movie.name}
                     <span className="mx-1 lg:mx-2">•</span>
+                    {/* {props.movie.releaseDate} */}
                     {year}
                     <span className="mx-1 lg:mx-2">•</span>
                     PG-13
                     <span className="mx-1 lg:mx-2">•</span>
-                    {hours}h {minutes}m
+                    {props.movie.runtime} min
                   </p>
                   <div className="md:ml-2 ml-0 flex items-center gap-2 pt-3 md:py-0 ">
                     <span className="border border-offWhite text-deepRose rounded-2xl text-[14px] font-medium px-[10px] py-[1px] ">
@@ -299,7 +300,10 @@ export default function Sidebar(props) {
                     </span>
                   </div>
                 </div>
-                <p className="text-lg font-poppins text-offBlack text-justify my-4">
+                <p
+                  className="text-lg font-poppins text-offBlack text-justify my-4"
+                  data-testid="movie-overview"
+                >
                   {props.movie.overview}
                 </p>
 
