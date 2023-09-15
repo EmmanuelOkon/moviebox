@@ -16,11 +16,6 @@ export default function SearchBox({ styles }) {
   const placeholderText =
     window.innerWidth <= 426 ? "Search" : "What do you want to watch?";
 
-  // const mergedStyle = {
-  //   ...defaultStyles,
-  //   ...style,
-  // };
-
   return (
     <>
       <form

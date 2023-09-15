@@ -18,15 +18,18 @@ export default async function SearchPage({ params }) {
   return (
     <div>
       {results && results.length === 0 && (
-        <h1 className="text-center pt-6">No results found</h1>
+        <>
+          <Navbar />
+          <h1 className="text-center pt-6">No results found</h1>
+        </>
       )}
 
       {results && (
         <>
           <Navbar />
-          <div className="fle">
-            <h1 className="text-center pt-6">
-              Search results for: {params.searchTerm}
+          <div className="flex justify-center px-4 lg:px-16 ">
+            <h1 className="text-center pt-6 lg:py-3 text-lg font-dmsans lg:text-3xl font-bold">
+              Search Results:
             </h1>
           </div>
           <Results results={results} />
