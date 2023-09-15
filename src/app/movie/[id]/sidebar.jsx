@@ -30,7 +30,11 @@ function classNames(...classes) {
 export default function Sidebar(props) {
   const { movie, year, hours, minutes } = props;
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 4000);
 
   const isMovieDataAvailable = !!movie;
 
@@ -155,7 +159,6 @@ export default function Sidebar(props) {
         </Dialog>
       </Transition.Root>
 
-      {/* Static sidebar for desktop */}
       <div className="hidden bg-white border border-black border-opacity-30 rounded-e-[35px] text-deepGray md:flex md:flex-shrink-0">
         <div className="flex flex-col w-64">
           <div className="flex-1 flex flex-col min-h-0">
@@ -247,31 +250,32 @@ export default function Sidebar(props) {
         </div>
         <main className="flex-1 relative z-0 overflow-y-auto focus:outline-none">
           {isMovieDataAvailable && (
-            <>
+            <div className="w-full bg-white">
               {isLoading ? (
                 <Loading />
               ) : (
-                <div className="w-full bg-white">
-                  <div className="py-4 md:pt-8 flex w-[80%] mx-auto md:w-full items-center justify-center content-center md:spacex-6">
-                    <Image
-                      src={`https://image.tmdb.org/t/p/original/${
-                        props.movie.backdropPath || props.movie.posterPath
-                      }`}
-                      width={1000}
-                      height={10}
-                      className="rounded-md md:rounded-lg bg-contain bg-center px-4 lg:px-0 "
-                      style={{
-                        maxWidth: "100%",
-                      }}
-                      placeholder="blur"
-                      blurDataURL="/spinner.svg"
-                      alt={props.movie.title}
-                      onLoadingComplete={() => setIsLoading(false)}
-                    ></Image>
-                  </div>
+                <div
+                  className="py-4 md:pt-8 flex w-[80%] mx-auto md:w-full items-center justify-center content-center md:spacex-6"
+                  onLoad={() => setIsLoading(false)}
+                >
+                  <Image
+                    onLoadingComplete={() => setIsLoading(false)}
+                    src={`https://image.tmdb.org/t/p/original/${
+                      props.movie.backdropPath || props.movie.posterPath
+                    }`}
+                    width={1000}
+                    height={10}
+                    className="rounded-md md:rounded-lg bg-contain bg-center px-4 lg:px-0 "
+                    style={{
+                      maxWidth: "100%",
+                    }}
+                    placeholder="blur"
+                    blurDataURL="/spinner.svg"
+                    alt={props.movie.title}
+                  ></Image>
                 </div>
               )}
-            </>
+            </div>
           )}
           <div className="px-4 sm:px-6 md:px-8 grid grid-cols-1 lg:grid-cols-3 lg:gap-6 py-2 md:py-6 pb-4">
             <div className="col-span-2 bg-white ">
@@ -286,7 +290,7 @@ export default function Sidebar(props) {
                     <span className="mx-1 lg:mx-2">•</span>
                     {hours}h {minutes}m
                   </p>
-                  <div className="ml-2 sm:ml-0 flex items-center gap-2 pt-3 md:py-0 ">
+                  <div className="md:ml-2 ml-0 flex items-center gap-2 pt-3 md:py-0 ">
                     <span className="border border-offWhite text-deepRose rounded-2xl text-[14px] font-medium px-[10px] py-[1px] ">
                       Action
                     </span>

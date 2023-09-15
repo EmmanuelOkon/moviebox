@@ -4,19 +4,34 @@ import SearchBox from "./SearchBox";
 import { TbMenu } from "react-icons/tb";
 
 export default function Navbar() {
+  const searchBoxStyles = {
+    borderColor: "red",
+    placeholderColor: "blue",
+  };
+
   return (
     <div className="flex w-full max-w[1380px] mx-auto justify-between items-center text-white px-4 md:px-10 lg:px-16 py-2">
       <Link
-        className="gap-2 text-xl font-bold flex items-center  lg:gap-4 font-poppins outline-0 text-white"
+        className="w-1/2 lg:w-full gap-2 text-xl font-bold flex items-center lg:gap-4 font-poppins outline-0 text-white"
         href="/"
       >
-        <Image src="/assets/logo.png" alt="logo" width={50} height={50} />
-        MovieBox
+        <Image
+          className=""
+          src="/assets/logo.png"
+          alt="logo"
+          width={50}
+          height={50}
+        />
+        <span className="hidden md:flex text-xl font-bold font-poppins outline-0 text-white">
+          MovieBox
+        </span>
       </Link>
-      <SearchBox />
-      <div className="flex items-center gap-2">
+
+      <SearchBox styles={searchBoxStyles} />
+
+      <div className="w-1/2 lg:w-full flex items-center justify-end gap-2">
         <Link
-          className="text-base lg:text-xl font-medium font-dmsans rounded-full lg:p-[24px] text-white"
+          className="hidden md:flex text-base lg:text-xl font-medium font-dmsans rounded-full lg:p-[24px] text-white"
           href="#"
         >
           Sign in
