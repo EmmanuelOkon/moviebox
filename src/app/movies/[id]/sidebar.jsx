@@ -14,7 +14,6 @@ import { IoTicketOutline } from "react-icons/io5";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { BsChevronDown } from "react-icons/bs";
 import Loading from "../../loading";
-import { FaDoorClosed } from "react-icons/fa";
 
 const navigation = [
   { name: "Home", href: "/", icon: HomeIcon, current: false },
@@ -257,6 +256,7 @@ export default function Sidebar(props) {
                 <div
                   className="py-4 md:pt-8 flex w-[80%] mx-auto md:w-full items-center justify-center content-center md:spacex-6"
                   onLoad={() => setIsLoading(false)}
+                  data-testid="movie-card"
                 >
                   <Image
                     onLoadingComplete={() => setIsLoading(false)}
@@ -272,6 +272,7 @@ export default function Sidebar(props) {
                     placeholder="blur"
                     blurDataURL="/spinner.svg"
                     alt={props.movie.title}
+                    data-testid="movie-poster"
                   ></Image>
                 </div>
               )}
@@ -281,16 +282,35 @@ export default function Sidebar(props) {
             <div className="col-span-2 bg-white ">
               <div className="">
                 <div className="text-center text-white w-full flex flex-col md:flex-row items-center">
-                  <p className="flex items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins">
-                    {props.movie.title || props.movie.name}
+                  <div className="flex items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins">
+                    <p
+                      data-testid="movie-title"
+                      className="flex items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins"
+                    >
+                      {props.movie.title || props.movie.name}
+                    </p>
                     <span className="mx-1 lg:mx-2">•</span>
                     {/* {props.movie.releaseDate} */}
-                    {year}
+                    <p
+                      data-testid="movie-release-date"
+                      className="flex items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins"
+                    >
+                      {props.movie.relDate}
+                    </p>
+                    {/* {year} */}
                     <span className="mx-1 lg:mx-2">•</span>
-                    PG-13
+                    <p className="flex items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins">
+                      PG-13
+                    </p>
                     <span className="mx-1 lg:mx-2">•</span>
-                    {props.movie.runtime} min
-                  </p>
+                    <p
+                      data-testid="movie-runtime"
+                      className="flex items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins"
+                    >
+                      {props.movie.runtime} min
+                    </p>
+                  </div>
+
                   <div className="md:ml-2 ml-0 flex items-center gap-2 pt-3 md:py-0 ">
                     <span className="border border-offWhite text-deepRose rounded-2xl text-[14px] font-medium px-[10px] py-[1px] ">
                       Action

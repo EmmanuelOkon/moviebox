@@ -10,7 +10,7 @@ export default function Card({ result }) {
 
   return (
     <div className="my-[20px] bg-ros cursor-pointer sm:hover:shadow-md transition-shadow duration-200 group">
-      <Link className="" href={`/movie/${result.id}`} data-testid="movie-card">
+      <Link className="" href={`/movies/${result.id}`} data-testid="movie-card">
         <div className="flex relative">
           <Image
             src={`https://image.tmdb.org/t/p/original/${
