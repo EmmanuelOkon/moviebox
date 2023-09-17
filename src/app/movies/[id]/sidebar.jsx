@@ -285,24 +285,24 @@ export default function Sidebar(props) {
                   <div className="flex items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins">
                     <p
                       data-testid="movie-title"
-                      className="flex items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins"
+                      className="flex items-center text-[16px] lg:text-lg font-bold md:font-black text-deepGray font-poppins"
                     >
                       {props.movie.title || props.movie.name}
                     </p>
-                    <span className="mx-1 lg:mx-2 hidden md:flex ">•</span>
+                    <span className="mx-1 hidden md:flex ">•</span>
                     {/* {props.movie.releaseDate} */}
                     <p
                       data-testid="movie-release-date"
-                      className="hidden md:flex items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins"
+                      className="hidden md:flex items-center text-[16px] lg:text-lg font-bold md:font-black text-deepGray font-poppins"
                     >
                       {props.movie.relDate}
                     </p>
                     {/* {year} */}
-                    <span className="mx-1 lg:mx-2">•</span>
-                    <p className="flex items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins">
+                    <span className="mx-1">•</span>
+                    <p className="flex items-center text-[16px] lg:text-lg font-bold md:font-black text-deepGray font-poppins">
                       PG-13
                     </p>
-                    <span className="mx-1 lg:mx-2">•</span>
+                    <span className="mx-1">•</span>
                   </div>
 
                   <div className="md:ml-2 ml-0 hidden md:flex items-center gap-2 pt-3 md:py-0 ">
@@ -316,11 +316,11 @@ export default function Sidebar(props) {
                 </div>
                 <p
                   data-testid="movie-release-date"
-                  className="flex md:hidden items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins"
+                  className="flex md:hidden items-center text-[16px] lg:text-lg font-bold md:font-black text-deepGray font-poppins"
                 >
                   {props.movie.relDate}
                 </p>
-                <div className="flex items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins py-1">
+                <div className="flex items-center text-[16px] lg:text-lg font-bold md:font-black text-deepGray font-poppins py-1">
                   <span>Runtime:</span>
                   <p data-testid="movie-runtime" className="pl-1">
                     {props.movie.runtime} min

@@ -62,7 +62,7 @@ export default function Card({ result }) {
             {movieData.relDate}
           </span>
           <h2
-            className="font-dmsans text-[24px] md:text-2xl font-bold text-deepGray"
+            className="font-dmsans text-[22px] md:text-xl md:py-2 font-bold text-deepGray"
             data-testid="movie-title"
           >
             {result.title || result.name}
