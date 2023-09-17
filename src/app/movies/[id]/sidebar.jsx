@@ -303,15 +303,9 @@ export default function Sidebar(props) {
                       PG-13
                     </p>
                     <span className="mx-1 lg:mx-2">•</span>
-                    <p
-                      data-testid="movie-runtime"
-                      className="flex items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins"
-                    >
-                      {props.movie.runtime} min
-                    </p>
                   </div>
 
-                  <div className="md:ml-2 ml-0 flex items-center gap-2 pt-3 md:py-0 ">
+                  <div className="md:ml-2 ml-0 hidden md:flex items-center gap-2 pt-3 md:py-0 ">
                     <span className="border border-offWhite text-deepRose rounded-2xl text-[14px] font-medium px-[10px] py-[1px] ">
                       Action
                     </span>
@@ -319,6 +313,20 @@ export default function Sidebar(props) {
                       Drama
                     </span>
                   </div>
+                </div>
+                <div className="flex items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins py-1">
+                  <span>Runtime:</span>
+                  <p data-testid="movie-runtime" className="pl-1">
+                    {props.movie.runtime} min
+                  </p>
+                </div>
+                <div className="md:ml-2 ml-0 flex md:hidden items-center gap-2 pt-3 md:py-0 ">
+                  <span className="border border-offWhite text-deepRose rounded-2xl text-[14px] font-medium px-[10px] py-[1px] ">
+                    Action
+                  </span>
+                  <span className="border border-offWhite text-deepRose rounded-2xl text-[14px] font-medium px-[10px] py-[1px]">
+                    Drama
+                  </span>
                 </div>
                 <p
                   className="text-lg font-poppins text-offBlack text-justify my-4"

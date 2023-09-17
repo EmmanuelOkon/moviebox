@@ -56,7 +56,7 @@ export default function Card({ result }) {
             className="text-lightGray text-[12px] font-semibold tracking-widest"
             data-testid="movie-release-date"
           >
-            USA, {movieData.relDate}
+            {movieData.relDate}
           </span>
           <h2
             className="font-dmsans text-[24px] md:text-2xl font-bold text-deepGray"
