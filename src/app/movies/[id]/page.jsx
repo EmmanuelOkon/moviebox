@@ -52,6 +52,9 @@ export default async function MoviePage({ params }) {
     relDate: `${day}-${abbreviatedMonth}-${year}`,
   };
 
+  const utcRelDate = new Date(`${year}-${month}-${day} UTC`).toUTCString();
+  movieData.relDate = utcRelDate;
+
   return (
     <>
       <Sidebar movie={movieData} year={year} />

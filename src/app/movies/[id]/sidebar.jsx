@@ -289,11 +289,11 @@ export default function Sidebar(props) {
                     >
                       {props.movie.title || props.movie.name}
                     </p>
-                    <span className="mx-1 lg:mx-2">•</span>
+                    <span className="mx-1 lg:mx-2 hidden md:flex ">•</span>
                     {/* {props.movie.releaseDate} */}
                     <p
                       data-testid="movie-release-date"
-                      className="flex items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins"
+                      className="hidden md:flex items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins"
                     >
                       {props.movie.relDate}
                     </p>
@@ -314,6 +314,12 @@ export default function Sidebar(props) {
                     </span>
                   </div>
                 </div>
+                <p
+                  data-testid="movie-release-date"
+                  className="flex md:hidden items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins"
+                >
+                  {props.movie.relDate}
+                </p>
                 <div className="flex items-center text-[18px] lg:text-xl font-bold md:font-black text-deepGray font-poppins py-1">
                   <span>Runtime:</span>
                   <p data-testid="movie-runtime" className="pl-1">

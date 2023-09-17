@@ -29,6 +29,9 @@ export default function Card({ result }) {
     relDate: `${day}-${abbreviatedMonth}-${year}`,
   };
 
+  const utcRelDate = new Date(`${year}-${month}-${day} UTC`).toUTCString();
+  movieData.relDate = utcRelDate;
+
   return (
     <div className="my-[20px] bg-ros cursor-pointer sm:hover:shadow-md transition-shadow duration-200 group">
       <Link className="" href={`/movies/${result.id}`} data-testid="movie-card">
