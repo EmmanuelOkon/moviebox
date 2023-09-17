@@ -6,7 +6,28 @@ import { FaHeart } from "react-icons/fa";
 
 export default function Card({ result }) {
   const releaseDate = result.release_date;
-  const [year] = releaseDate.split("-");
+  const [year, month, day] = releaseDate.split("-");
+
+  const monthAbbreviations = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const abbreviatedMonth = monthAbbreviations[parseInt(month) - 1];
+
+  const movieData = {
+    relDate: `${day}-${abbreviatedMonth}-${year}`,
+  };
 
   return (
     <div className="my-[20px] bg-ros cursor-pointer sm:hover:shadow-md transition-shadow duration-200 group">
@@ -35,7 +56,7 @@ export default function Card({ result }) {
             className="text-lightGray text-[12px] font-semibold tracking-widest"
             data-testid="movie-release-date"
           >
-            USA, {year}
+            USA, {movieData.relDate}
           </span>
           <h2
             className="font-dmsans text-[24px] md:text-2xl font-bold text-deepGray"

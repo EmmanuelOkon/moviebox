@@ -49,7 +49,7 @@ export default async function MoviePage({ params }) {
     popularity: movie.popularity,
     voteAverage: movie.vote_average,
     runtime: movie.runtime,
-    relDate: `${day}/${abbreviatedMonth}/${year}`,
+    relDate: `${day}-${abbreviatedMonth}-${year}`,
   };
 
   return (
