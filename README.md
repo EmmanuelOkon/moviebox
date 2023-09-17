@@ -1,55 +1,57 @@
-# MovieBox - Next.js Movie Details Page
-
-![MovieBox Logo](/assets/logo.png)
-
-MovieBox is a Next.js application that allows users to view detailed information about movies. This project serves as a template for creating movie details pages and includes a responsive sidebar for navigation.
-
-## Table of Contents
-
-- [MovieBox - Next.js Movie Details Page](#moviebox---nextjs-movie-details-page)
-  - [Table of Contents](#table-of-contents)
-  - [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-
-## Getting Started
-
-### Prerequisites
-
-Before you start, make sure you have the following tools installed:
-
-- [Node.js](https://nodejs.org/) (v14 or higher)
-- [npm](https://www.npmjs.com/) (usually comes with Node.js)
-
-### Installation
-
-1. Clone the repository to your local machine:
-   ```bash
-   git clone https://github.com/your-username/moviebox-nextjs.git
-   ```
-
-Usage
-Use the sidebar to navigate between different sections of the application, including Home, Movies, TV Series, and Upcoming.
-Click on a movie to view its details, including the title, overview, release date, and rating.
+MovieBox - Movie Discovery Web Application
+MovieBox is a dynamic movie discovery web application that allows users to search for movies, view movie details, and save their favorite movies. It leverages the TMDB API to fetch real movie data.
+Table of Contents
+Demo
 Features
-Responsive sidebar for easy navigation on both desktop and mobile devices.
-Fetches movie data from The Movie Database (TMDb) API based on movie IDs.
-Displays detailed information about each movie, including an image, title, overview, release date, and rating.
-Utilizes Next.js for server-side rendering and improved performance.
-Project Structure
-/pages: Contains the Next.js pages and routing.
-/components: Includes React components used in the application.
-/public: Stores static assets, such as images and the logo.
-/styles: Contains Tailwind CSS styles and configuration.
-next.config.js: Next.js configuration file.
-.env.local: Stores sensitive environment variables (API key).
+Getting Started
+Prerequisites
+Installation
+Usage
+API Integration
+Error Handling
 Contributing
-Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
+License
+Demo
+You can check out the live demo of MovieBox at [Demo Link] https://moviebox-whiteblack.vercel.app/.
+Features
+Search Movies: Easily search for movies by title.
+View Movie Details: Access detailed information about any movie.
+Top-Rated Movies: Discover the top 10 movies on the homepage.
+Responsive Design: Enjoy a visually appealing and responsive user interface.
+API Integration: Real-time movie data from TMDB API.
 
+<!-- ![MovieBox Screenshot] https://drive.google.com/file/d/18ArbXTX2RmTuk41vX7BIBlBHJNVht64s/view?usp=drive_link
+https://drive.google.com/file/d/12BQmnTSQwNYEtG0YTSPwyq8qNzc5DRss/view?usp=sharing
+https://drive.google.com/file/d/1uvAPc3oQDQsikf0j4yy38xp-YyXfaCLo/view?usp=sharing -->
+
+Getting Started
+Prerequisites
+Before you get started, ensure you have the following prerequisites:
+Node.js installed
+npm or Yarn package manager
+Installation
+Clone the repository.
+git clone https://github.com/EmmanuelOkon/moviebox.git
+Navigate to the project directory.
+cd MovieBox
+Install the dependencies.
+npm install react-dom npm install axios npm install react
+Usage
+Start the development server.
+npm start Open your web browser and access http://localhost:3000 to use MovieBox.
+Use the search feature to find movies by title, and click on a movie to view its details.
+API Integration
+MovieBox integrates with the TMDB API to fetch movie data. To use this API, you'll need to obtain an API key from TMDB.
+Place your API key in the .env file:
+REACT_APP_TMDB_API_KEY=your-api-key-here
+Error Handling
+MovieBox provides informative error messages in case of API failures or other issues, ensuring a smooth user experience.
+Contributing
+We welcome contributions to MovieBox! To contribute, follow these steps:
 Fork the repository.
 Create a new branch for your feature or bug fix.
-Make your changes and commit them with descriptive commit messages.
-Push your changes to your fork.
-Create a pull request to the main branch of this repository.
+Make your changes and commit them with descriptive messages.
+Push your branch to your fork.
+Create a pull request to the main repository.
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
