@@ -161,7 +161,7 @@ export default function Sidebar(props) {
       <div className="hidden bg-white border border-black border-opacity-30 rounded-e-[35px] text-deepGray md:flex md:flex-shrink-0">
         <div className="flex flex-col w-64">
           <div className="flex-1 flex flex-col min-h-0">
-            <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+            <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto scrollbar-hide">
               <div className="flex items-center flex-shrink-0 px-4">
                 <Link
                   className="text-bas lg: text-xl font-bold flex items-center lg:gap-4 font-poppins outline-0"
@@ -173,7 +173,7 @@ export default function Sidebar(props) {
                     width={50}
                     height={50}
                   />
-                  MovieBox
+                  MovieBox lap
                 </Link>
               </div>
               <nav className="mt-10 flex-1 space-y-1">
@@ -247,7 +247,7 @@ export default function Sidebar(props) {
             <MenuIcon className="h-6 w-6 text-rose" aria-hidden="true" />
           </button>
         </div>
-        <main className="flex-1 relative z-0 overflow-y-auto focus:outline-none">
+        <main className="flex-1 relative z-0 overflow-y-auto focus:outline-none scrollbar-hide ">
           {isMovieDataAvailable && (
             <div className="w-full bg-white">
               {isLoading ? (

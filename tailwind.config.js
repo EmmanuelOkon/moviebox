@@ -23,6 +23,6 @@ module.exports = {
       poppins: ["Poppins", "sans"],
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar-hide")],
   darkMode: "class",
 };
